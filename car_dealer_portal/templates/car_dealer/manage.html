@@ -1,0 +1,39 @@
+{% extends 'car_dealer/base.html' %}
+{% block content %}
+<div class="w3-bar w3-black w3-large">
+  <div class="w3-bar-item w3-left w3-black">Autókereskedő felület: {{user.username}}</div>
+  <a class="w3-bar-item w3-btn w3-teal w3-right" href="/car_dealer_portal/logout/">Kijelentkezés</a>
+  <a class="w3-bar-item w3-btn w3-teal w3-right " href="/car_dealer_portal/auth/">Főoldal</a>
+  <a class="w3-bar-item w3-btn w3-teal w3-right" href="/car_dealer_portal/order_list/">Rendelések</a>
+  <a class="w3-bar-item w3-btn w3-teal w3-right" href="/car_dealer_portal/manage_vehicles/">Autók</a>
+  <a class="w3-bar-item w3-btn w3-teal w3-right" href="/car_dealer_portal/history/">Bevételek</a>
+</div>
+<h3 class="w3-center" style="padding-top:30"><b>Elérhető atutók</b></h3>
+<div style="padding:18">
+<table class="w3-table w3-striped w3-center">
+
+  <tr>
+    <th style="padding:20;">Autó </th>
+    <th style="padding:20;">Szin </th>
+    <th style="padding:20;">Kapacitás </th>
+    <th style="padding:20;">Irányítószám </th>
+    <th style="padding:20;">Cim</th>
+    <th style="padding:20;">Folytatás</th>
+  </tr>
+  {% for vehicle in vehicle_list %}
+  <tr>
+      <td>{{vehicle.car_name}}</td>
+      <td>{{vehicle.color}}</td>
+      <td>{{vehicle.capacity}} Seats</td>
+      <td>{{vehicle.area.pincode}}</td>
+      <td>{{vehicle.area.city}}</td>
+      <td><form action = "/car_dealer_portal/delete/" method="post">
+        {% csrf_token %}
+        <input type="hidden" name="id" value="{{vehicle.id}}">
+        <input class="w3-btn w3-red" type="submit" value="Törlés">
+      </form></td>
+  </tr>
+{% endfor %}
+</table>
+</div>
+{% endblock %}

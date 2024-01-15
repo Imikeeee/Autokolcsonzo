@@ -1,0 +1,76 @@
+
+
+Before
+1/
+-------------
+Python telepítése legújabb, figyelj rá hogy amikor telepíted be kell pipálni hogy a path-t adja hozzá a környezeti változóhoz.
+Ez fontos mert alapból nem adja hozzá, és utána szívás lesz külön hozzáadni az elérési utakat.
+----------------------
+Adatbázis én sima xampp-ot csináltam lokálisan, majd beszélni kell Nemessel, hogy jó-e ennek a programnak, de felteszem nem kell hostolni.
+Settings.py fájl lesz olyan rész:
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'ocrsdjango',
+        'USER': 'root',
+        'PASSWORD': '',
+        'HOST': 'localhost',
+        'PORT': '3306',
+    }
+}
+-------------
+Git clone...
+
+2/
+-----------
+Install
+
+Terminálos cuccok:
+
+"Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass"
+Valami parancsoros hozzáféréses hülyeség, nem tudom pontosan mi, otthon nekem nem kéri, céges gépen kéri, e-nélkül el sem indul.
+----------
+"python -m pip install --upgrade pip"
+Install vagy updgrade ha már fent van.
+---------------
+" python -m venv Car_Rental-Django "
+Virtuált hozd lére.
+------------------------
+".\Car_Rental-Django\Scripts\activate"
+
+futtatsd a szkriptet az elérési út változhat cd-vel tudsz ugrálni.
+-----------------------
+"pip install -r requirements.txt"
+
+Jöhet a requirements.txt, ez feldobja neked a gyapotszedőt meg a mysqlklienst.
+------------------------------------
+"python manage.py makemigrations"
+
+Ez jó cucc dolgozik helyetted a nigger mördzsöl mindent mindennel.
+--------------
+
+"python manage.py migrate "
+
+Ez frissiti.
+---------------------------
+
+"python manage.py runserver "
+
+És futtatod.
+Folllow link.
+
+Ha mindent sorrendbe csinálsz akkor elvileg, fut.
+
+A frontendet rádbízom, szárnyalj tesó szárnyalj...... :D
+
+
+
+
+
+
+
+
+
+
+
+

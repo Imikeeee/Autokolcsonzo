@@ -1,0 +1,22 @@
+{% extends 'customer/base.html' %}
+{% block content %}
+<div class="w3-bar w3-large w3-black">
+  <div class="w3-bar-item w3-left w3-black">Felhasználói felület: {{user.username}}</div>
+  <a class="w3-bar-item w3-btn w3-teal w3-right" href="/customer_portal/logout/">Kijelentkezés</a>
+  <a class="w3-bar-item w3-btn w3-teal w3-right" href="/customer_portal/manage/">Kölcsönzések</a>
+  <a class="w3-ber-item w3-btn w3-teal w3-right" href="/customer_portal/search/">Autók keresése</a>
+</div>
+{% csrf_token %}
+
+<div class="w3-display-container" style="height:400px;">
+  <div class="w3-display-middle">
+<h3><b>A megrendelés sikeres</b></h3>
+<b>Jármű megrendelését feldolgoztuk!</b><br><br>
+<b>Teljes bérleti díj :</b> ${{order.rent}}<br><br>
+<b>Jármű :</b> {{order.vehicle.car_name}}<br><br>
+<b>Időtartam :</b> {{order.days}} napok<br><br>
+<b>Autókereskedő :</b> {{order.car_dealer.car_dealer.first_name}} {{order.car_dealer.car_dealer.last_name}}<br><br>
+<b>Autókereskedő elérhetősége:</b> {{order.car_dealer.mobile}}<br><br>
+</div>
+</div>
+{% endblock %}

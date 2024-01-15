@@ -1,0 +1,17 @@
+{% extends 'car_dealer/base.html' %}
+{% block content %}
+{% csrf_token %}
+<div class="w3-bar w3-black">
+  <div class="w3-bar-item w3-left">Regisztrációs tábla</div>
+  <a class="w3-bar-item w3-right w3-btn w3-teal" href="/car_dealer_portal/login/">Bejelentkezés</a>
+  <a class="w3-bar-item w3-right w3-btn w3-teal" href="/">Főoldal</a>
+</div>
+<div class="w3-center">
+<p class="w3-large">
+A regisztráció sikeres !
+</p>
+<p class="w3-large">
+Navigálj a <a class="w3-btn w3-teal" href="/car_dealer_portal/login/">Bejelentkező oldalra<a> és jelentkezz be !
+</p>
+</div>
+{% endblock %}

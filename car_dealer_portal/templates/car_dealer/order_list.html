@@ -1,0 +1,42 @@
+{% extends 'car_dealer/base.html' %}
+{% block content %}
+<div class="w3-bar w3-black w3-large">
+  <div class="w3-bar-item w3-left w3-black">Autókereskedő felüleC: {{user.username}}</div>
+  <a class="w3-bar-item w3-btn w3-teal w3-right" href="/car_dealer_portal/logout/">Kijelentkezés</a>
+  <a class="w3-bar-item w3-btn w3-teal w3-right " href="/car_dealer_portal/auth/">Főoldal</a>
+  <a class="w3-bar-item w3-btn w3-teal w3-right" href="/car_dealer_portal/order_list/">Rendelések</a>
+  <a class="w3-bar-item w3-btn w3-teal w3-right" href="/car_dealer_portal/manage_vehicles/">Autók</a>
+  <a class="w3-bar-item w3-btn w3-teal w3-right" href="/car_dealer_portal/history/">Bevételek</a>
+</div>
+<h3 class="w3-center" style="padding-top:30"><b>Rendelés alatt álló autók</b></h3>
+<div style="padding:18">
+<table class="w3-table w3-striped w3-center">
+
+
+  <tr>
+    <th style="padding:20">Név </th>
+    <th style="padding:20">Szin</th>
+    <th style="padding:20">Bérleti dij</th>
+    <th style="padding:20">Napok </th>
+    <th style="padding:20">Művelet
+    </th>
+  </tr>
+
+  {% for order in order_list %}
+
+  <tr>
+    <td>{{order.vehicle.car_name}}</td>
+    <td>{{order.vehicle.color}}</td>
+    <td>${{order.rent}}</td>
+    <td>{{order.days}}</td>
+    <td><form action = "/car_dealer_portal/complete/" method="post">
+      {% csrf_token %}
+      <input type="hidden" name="id" value="{{order.id}}">
+      <input class="w3-btn w3-indigo" type="submit" value="Érvényesités">
+    </form></td>
+  </tr>
+
+{% endfor %}
+</table>
+</div>
+{% endblock %}
